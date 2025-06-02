@@ -4,7 +4,7 @@ from priority_model import predict_priority  # suponiendo que tengas un modelo d
 
 # Cargar modelos
 topic_modeler = TopicModeler()
-topic_modeler.load_model("path/a/tu/modelo")  # si aplica
+#topic_modeler.load_model("path/a/tu/modelo")  # si aplica
 
 st.title("Clasificador de Tickets de TI")
 
@@ -16,9 +16,9 @@ if st.button("Clasificar"):
         st.warning("Por favor ingresa un texto.")
     else:
         # Procesar texto
-        clean_text = topic_modeler.preprocess_text(ticket)
-        topic = topic_modeler.predict_topic(clean_text)
-        subtopic = topic_modeler.predict_subtopic(clean_text)
+        clean_text = TopicModeler.preprocess_text(ticket)
+        topic = TopicModeler.show_topics(clean_text)
+        subtopic = TopicModeler.create_subtopics(clean_text)
         priority = predict_priority(clean_text)
 
         st.subheader("Resultados:")
